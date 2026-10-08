@@ -1,0 +1,97 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook 6",
+    "content": "CREATE DATABASE IF NOT EXISTS sql_practice_pack;\r\nUSE sql_practice_pack;\r\n\r\nCREATE TABLE IF NOT EXISTS students (\r\n student_id INT PRIMARY KEY,\r\n student_name VARCHAR(100),\r\n city VARCHAR(50)\r\n);\r\n\r\nINSERT IGNORE INTO students VALUES\r\n(1, 'Arun', 'Hyderabad'),\r\n(2, 'Megha', 'Mumbai'),\r\n(3, 'Zaid', 'Hyderabad'),\r\n(4, 'Pooja', 'Pune'),\r\n(5, 'Rohan', 'Delhi'),\r\n(6, 'Sana', NULL),\r\n(7, 'Vijay', 'Bangalore');\r\n\r\nCREATE TABLE IF NOT EXISTS courses (\r\n course_id INT PRIMARY KEY,\r\n course_name VARCHAR(100),\r\n fee DECIMAL(10,2)\r\n);\r\n\r\nINSERT IGNORE INTO courses VALUES\r\n(101, 'Python', 15000),\r\n(102, 'Data Engineering', 25000),\r\n(103, 'Power BI', 12000),\r\n(104, 'Cloud Computing', 20000),\r\n(105, 'Cyber Security', 22000),\r\n(106, 'Machine Learning', 28000);\r\n\r\nCREATE TABLE IF NOT EXISTS enrollments (\r\n enrollment_id INT PRIMARY KEY,\r\n student_id INT,\r\n course_id INT,\r\n enrollment_date DATE\r\n);\r\n\r\nINSERT IGNORE INTO enrollments VALUES\r\n(1001, 1, 101, '2026-09-01'),\r\n(1002, 1, 102, '2026-09-03'),\r\n(1003, 2, 103, '2026-09-04'),\r\n(1004, 3, 102, '2026-09-05'),\r\n(1005, 4, 104, '2026-09-06'),\r\n(1006, 2, 101, '2026-09-07'),\r\n(1007, 3, 105, '2026-09-08'),\r\n(1008, 20, 102, '2026-09-09'),\r\n(1009, 5, NULL, '2026-09-10');\r\nSELECT s.student_name, c.course_name FROM enrollments e JOIN students s ON e.student_id = s.student_id JOIN courses c ON e.course_id = c.course_id;\r\nSELECT s.student_name, s.city, c.course_name, c.fee FROM enrollments e JOIN students s ON e.student_id = s.student_id JOIN courses c ON e.course_id = c.course_id;\r\nSELECT s.student_name FROM enrollments e JOIN students s ON e.student_id = s.student_id JOIN courses c ON e.course_id = c.course_id WHERE c.course_name = 'Data Engineering';\r\nSELECT s.student_name, c.course_name FROM students s LEFT JOIN enrollments e ON s.student_id = e.student_id LEFT JOIN courses c ON e.course_id = c.course_id;\r\nSELECT s.student_name FROM students s LEFT JOIN enrollments e ON s.student_id = e.student_id WHERE e.enrollment_id IS NULL OR e.course_id IS NULL;\r\nSELECT c.course_name, s.student_name FROM courses c LEFT JOIN enrollments e ON c.course_id = e.course_id LEFT JOIN students s ON e.student_id = s.student_id;\r\nSELECT c.course_name FROM courses c LEFT JOIN enrollments e ON c.course_id = e.course_id WHERE e.enrollment_id IS NULL;\r\nSELECT e.* FROM enrollments e LEFT JOIN students s ON e.student_id = s.student_id WHERE s.student_id IS NULL;\r\nSELECT e.* FROM enrollments e LEFT JOIN courses c ON e.course_id = c.course_id WHERE c.course_id IS NULL;\r\nSELECT s.student_name, COUNT(e.course_id) AS total_courses FROM students s JOIN enrollments e ON s.student_id = e.student_id WHERE e.course_id IS NOT NULL GROUP BY s.student_id, s.student_name;\r\nSELECT s.student_name, SUM(c.fee) AS total_fee FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN courses c ON e.course_id = c.course_id GROUP BY s.student_id, s.student_name;\r\nSELECT s.student_name, COUNT(e.course_id) AS course_count FROM students s JOIN enrollments e ON s.student_id = e.student_id WHERE e.course_id IS NOT NULL GROUP BY s.student_id, s.student_name HAVING COUNT(e.course_id) > 1;\r\nSELECT c.course_name, COUNT(e.student_id) AS student_count FROM courses c JOIN enrollments e ON c.course_id = e.course_id JOIN students s ON e.student_id = s.student_id GROUP BY c.course_id, c.course_name HAVING COUNT(e.student_id) > 1;\r\nSELECT c.course_name, COUNT(e.enrollment_id) * c.fee AS total_revenue FROM courses c JOIN enrollments e ON c.course_id = e.course_id GROUP BY c.course_id, c.course_name, c.fee;\r\nSELECT c.course_name, COUNT(e.enrollment_id) * c.fee AS total_revenue FROM courses c JOIN enrollments e ON c.course_id = e.course_id GROUP BY c.course_id, c.course_name, c.fee ORDER BY total_revenue DESC LIMIT 1;\r\n",
+    "options": {
+        "tabSize": 4,
+        "insertSpaces": true,
+        "indentSize": 4,
+        "defaultEOL": "CRLF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": true,
+                "selectionStart": {
+                    "lineNumber": 64,
+                    "column": 213
+                },
+                "position": {
+                    "lineNumber": 1,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 1,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 0
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 64,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USE sql_practice_pack;\n\nCREATE TABLE IF NOT EXISTS students (\n student_id INT PR' at line 2",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 96.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 3691
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 65,
+                "end": 65,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

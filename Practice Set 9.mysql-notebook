@@ -1,0 +1,97 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook 12",
+    "content": "CREATE DATABASE IF NOT EXISTS sql_practice_pack;\r\nUSE sql_practice_pack;\r\n\r\nCREATE TABLE IF NOT EXISTS staff_hierarchy (\r\n employee_id INT PRIMARY KEY,\r\n employee_name VARCHAR(100),\r\n manager_id INT,\r\n designation VARCHAR(100)\r\n);\r\n\r\nINSERT IGNORE INTO staff_hierarchy VALUES\r\n(1, 'Raj Malhotra', NULL, 'CEO'),\r\n(2, 'Meera Shah', 1, 'CTO'),\r\n(3, 'Vikram Rao', 1, 'Sales Director'),\r\n(4, 'Aman Khan', 2, 'Engineering Manager'),\r\n(5, 'Sara Ali', 2, 'Data Manager'),\r\n(6, 'Rohit Das', 4, 'Developer'),\r\n(7, 'Priya Singh', 4, 'Developer'),\r\n(8, 'Kabir Ahmed', 5, 'Data Engineer'),\r\n(9, 'Neha Rao', 5, 'Data Analyst'),\r\n(10, 'Imran Sheikh', 3, 'Sales Manager'),\r\n(11, 'Pooja Jain', 10, 'Sales Executive');\r\nSELECT * FROM staff_hierarchy WHERE manager_id IS NULL;\r\nSELECT * FROM staff_hierarchy WHERE manager_id = (SELECT employee_id FROM staff_hierarchy WHERE designation = 'CEO');\r\nSELECT * FROM staff_hierarchy WHERE manager_id = (SELECT employee_id FROM staff_hierarchy WHERE designation = 'CTO');\r\nWITH RECURSIVE org_hierarchy AS (SELECT employee_id, employee_name, manager_id, designation FROM staff_hierarchy WHERE manager_id IS NULL UNION ALL SELECT e.employee_id, e.employee_name, e.manager_id, e.designation FROM staff_hierarchy e JOIN org_hierarchy h ON e.manager_id = h.employee_id) SELECT * FROM org_hierarchy;\r\nWITH RECURSIVE org_hierarchy AS (SELECT employee_id, employee_name, manager_id, designation, 1 AS level FROM staff_hierarchy WHERE manager_id IS NULL UNION ALL SELECT e.employee_id, e.employee_name, e.manager_id, e.designation, h.level + 1 FROM staff_hierarchy e JOIN org_hierarchy h ON e.manager_id = h.employee_id) SELECT * FROM org_hierarchy;\r\nWITH RECURSIVE subordinates AS (SELECT employee_id, employee_name, manager_id, designation FROM staff_hierarchy WHERE manager_id = (SELECT employee_id FROM staff_hierarchy WHERE employee_name = 'Meera Shah') UNION ALL SELECT e.employee_id, e.employee_name, e.manager_id, e.designation FROM staff_hierarchy e JOIN subordinates s ON e.manager_id = s.employee_id) SELECT * FROM subordinates;\r\nWITH RECURSIVE subordinates AS (SELECT employee_id, employee_name, manager_id, designation FROM staff_hierarchy WHERE manager_id = (SELECT employee_id FROM staff_hierarchy WHERE employee_name = 'Aman Khan') UNION ALL SELECT e.employee_id, e.employee_name, e.manager_id, e.designation FROM staff_hierarchy e JOIN subordinates s ON e.manager_id = s.employee_id) SELECT * FROM subordinates;\r\nSELECT e.employee_name AS employee, COALESCE(m.employee_name, 'No Manager') AS manager FROM staff_hierarchy e LEFT JOIN staff_hierarchy m ON e.manager_id = m.employee_id;\r\nWITH RECURSIVE org_hierarchy AS (SELECT employee_id, 1 AS level FROM staff_hierarchy WHERE manager_id IS NULL UNION ALL SELECT e.employee_id, h.level + 1 FROM staff_hierarchy e JOIN org_hierarchy h ON e.manager_id = h.employee_id) SELECT level, COUNT(*) AS total_employees FROM org_hierarchy GROUP BY level ORDER BY level;\r\nWITH RECURSIVE org_hierarchy AS (SELECT employee_id, employee_name, manager_id, designation, 1 AS level, CAST(employee_name AS CHAR(1000)) AS path FROM staff_hierarchy WHERE manager_id IS NULL UNION ALL SELECT e.employee_id, e.employee_name, e.manager_id, e.designation, h.level + 1, CONCAT(h.path, ' -> ', e.employee_name) FROM staff_hierarchy e JOIN org_hierarchy h ON e.manager_id = h.employee_id) SELECT employee_id, employee_name, designation, level, path FROM org_hierarchy ORDER BY path;\r\n",
+    "options": {
+        "tabSize": 4,
+        "insertSpaces": true,
+        "indentSize": 4,
+        "defaultEOL": "CRLF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 10,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 10,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 1,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 0
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": true
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 32,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USE sql_practice_pack;\n\nCREATE TABLE IF NOT EXISTS staff_hierarchy (\n employee_i' at line 2",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 96.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 3404
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 33,
+                "end": 33,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
