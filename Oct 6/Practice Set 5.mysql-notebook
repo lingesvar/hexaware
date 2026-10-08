@@ -1,0 +1,97 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook 8",
+    "content": "CREATE DATABASE IF NOT EXISTS sql_practice_pack;\r\nUSE sql_practice_pack;\r\n\r\nCREATE TABLE IF NOT EXISTS registrations (\r\n registration_id INT PRIMARY KEY,\r\n full_name VARCHAR(100),\r\n email VARCHAR(100),\r\n mobile VARCHAR(40),\r\n city VARCHAR(50),\r\n postal_code VARCHAR(20)\r\n);\r\n\r\nINSERT IGNORE INTO registrations VALUES\r\n(1, ' rohit sharma ', ' ROHIT@GMAIL.COM ', '+91-98765-43210', 'hyderabad', '500001'),\r\n(2, 'SARA KHAN', 'sara@yahoo.com', '99887 66554', ' MUMBAI ', '400001'),\r\n(3, ' amit patel ', '', '(040)99887766', 'Hyderabad', '500 032'),\r\n(4, 'Neha Singh ', NULL, '9876543210', 'BANGALORE', '560001'),\r\n(5, 'imran ali', 'IMRAN@MAIL.COM ', '91 9988772211', NULL, '500084'),\r\n(6, 'Priya Rao', 'priya@gmail', '98765-AB210', 'Pune', '411001');\r\nSELECT TRIM(full_name) FROM registrations;\r\nSELECT UPPER(TRIM(full_name)) FROM registrations;\r\nSELECT LOWER(TRIM(email)) FROM registrations;\r\nUPDATE registrations SET email = NULL WHERE TRIM(email) = '';\r\nSELECT REPLACE(REPLACE(mobile, ' ', ''), '-', '') FROM registrations;\r\nSELECT REGEXP_REPLACE(mobile, '[^0-9]', '') FROM registrations;\r\nSELECT UPPER(TRIM(city)) FROM registrations;\r\nSELECT * FROM registrations WHERE city IS NULL;\r\nSELECT * FROM registrations WHERE email IS NULL OR TRIM(email) = '';\r\nSELECT * FROM registrations WHERE LOWER(TRIM(email)) REGEXP '@gmail\\\\.com$';\r\nSELECT * FROM registrations WHERE email IS NOT NULL AND LOWER(TRIM(email)) NOT REGEXP '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$';\r\nSELECT REGEXP_REPLACE(postal_code, '[^0-9]', '') FROM registrations;\r\nSELECT * FROM registrations WHERE mobile REGEXP '[a-zA-Z]';\r\nSELECT UPPER(TRIM(full_name)) AS full_name, LOWER(TRIM(NULLIF(TRIM(email), ''))) AS email, REGEXP_REPLACE(mobile, '[^0-9]', '') AS mobile, UPPER(TRIM(city)) AS city FROM registrations;\r\nCREATE TABLE cleaned_registrations AS SELECT registration_id, UPPER(TRIM(full_name)) AS full_name, LOWER(TRIM(NULLIF(TRIM(email), ''))) AS email, REGEXP_REPLACE(mobile, '[^0-9]', '') AS mobile, UPPER(TRIM(city)) AS city, REGEXP_REPLACE(postal_code, '[^0-9]', '') AS postal_code FROM registrations;\r\n",
+    "options": {
+        "tabSize": 4,
+        "insertSpaces": true,
+        "indentSize": 4,
+        "defaultEOL": "CRLF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 35,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 35,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 1,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 0
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 34,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USE sql_practice_pack;\n\nCREATE TABLE IF NOT EXISTS registrations (\n registration' at line 2",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 81.59375,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 2053
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 35,
+                "end": 35,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
