@@ -1,0 +1,7 @@
+cities = ("Hyderabad", "Mumbai", "Delhi", "Bangalore")
+print(cities)
+cities.add("Chennai")
+cities.remove("Mumbai")
+cities.discard("Delhi")
+unique_cities = set(cities)
+print(unique_cities)
