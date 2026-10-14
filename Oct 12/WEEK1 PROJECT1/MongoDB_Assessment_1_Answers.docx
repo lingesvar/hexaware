@@ -1,0 +1,27 @@
+68. Product can have five colors
+Answer: Array
+Reason: An array stores multiple colors in one field.
+69. Customer has one residential address
+Answer: Embedded Document
+Reason: Address details such as city, state and pincode can be grouped together.
+70. Order contains multiple products
+Answer: Array of Embedded Documents
+Reason: Each item can store its product name, quantity and price.
+71. Product has RAM, storage and processor information
+Answer: Embedded Document
+Reason: Related specifications can be stored together.
+72. Customer can have thousands of orders over many years
+Answer: Separate Collection / Reference
+Reason: A separate orders collection avoids an excessively large customer document.
+73. Product can have millions of customer reviews
+Answer: Separate Collection / Reference
+Reason: A separate reviews collection supports large numbers of reviews without making the product document excessively large.
+74. Employee has first name and last name
+Answer: Simple Fields
+Reason: First name and last name are individual values.
+75. Product has multiple tags
+Answer: Array
+Reason: An array can store multiple tags in one field.
+Array for categories: A supplier can provide multiple product categories.
+Embedded document for contact details: Phone number and email are related information that can be grouped together.
+Array for warehouse locations: A supplier can operate multiple warehouses, so an array stores the locations in one field.
