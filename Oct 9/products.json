@@ -1,0 +1,16 @@
+import json
+
+products = [
+  {
+      "product_id": 101,
+      "product_name": "Laptop",
+      "category": "Electronics",
+      "price": 65000
+  },
+  {
+      "product_id": 102,
+      "product_name": "Mouse",
+      "category": "Electronics",
+      "price": 65000
+  }
+]
