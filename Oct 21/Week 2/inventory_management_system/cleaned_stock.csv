@@ -1,0 +1,6 @@
+product_id,product_name,warehouse_id,action,quantity,date
+1,Laptop,1,STOCK_IN,25,2026-10-01
+2,Headphones,1,STOCK_IN,15,2026-10-02
+1,Laptop,1,STOCK_ADJUSTMENT,-5,2026-10-03
+3,Office Chair,2,STOCK_IN,8,2026-10-04
+2,Headphones,1,STOCK_ADJUSTMENT,-10,2026-10-05

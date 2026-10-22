@@ -1,0 +1,6 @@
+student_id,student_name,course_id,enrollment_date,completion
+1,Arun,101,2026-10-01,75
+2,Priya,102,2026-10-02,40
+3,Kumar,101,2026-10-03,100
+4,Meena,102,2026-10-04,
+5,,101,2026-10-05,120
