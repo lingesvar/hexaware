@@ -1,0 +1,136 @@
+Cloud Computing
+1. What is Cloud Computing?
+Cloud computing is the delivery of computing services such as servers, storage, databases, networking, and software over the Internet instead of using your own physical computer or server.
+
+In simple words:
+
+Cloud computing allows us to store data, run applications, and access services through the Internet without maintaining our own physical servers.
+
+Example:
+- Google Drive – Storing files online.
+- Gmail – Sending and receiving emails.
+- Netflix – Streaming videos.
+- Microsoft Azure – Hosting applications and storing data.
+
+
+2. What is Azure Cloud?
+Microsoft Azure is a cloud computing platform developed by Microsoft.
+
+It provides different cloud services that help businesses and developers build, deploy, manage, and store applications and data through Microsoft's global network of data centres.
+
+Examples of Azure services:
+Azure service	Purpose
+Azure Virtual Machines	Create virtual computers
+Azure Storage	Store files and data
+Azure SQL Database	Store and manage databases
+Azure AI Services	Build AI applications
+Azure App Service	Host web applications
+Azure Virtual Network	Connect cloud resources securely
+
+
+
+
+Example: A company can use Azure to host its website, store customer information, and manage its database without purchasing physical servers.
+3. Advantages of Cloud Computing
+The major advantages are:
+1. Cost Savings: No need to purchase expensive physical servers.
+2. Scalability: Easily increase or decrease computing resources according to requirements.
+3. Accessibility: Access data and applications from anywhere through the Internet.
+4. Data Backup: Store backups and recover data when needed.
+5. Security: Cloud providers offer security features such as encryption and access control.
+6. Flexibility: Use different services depending on business requirements.
+7. High Availability: Cloud services are designed to keep applications running with minimal downtime.
+8. Automatic Updates: Cloud providers maintain and update many of their services.
+4. What are IaaS, PaaS and SaaS?
+These are the three main cloud computing service models.
+
+
+
+
+
+
+
+
+A. IaaS – Infrastructure as a Service
+IaaS provides virtual infrastructure such as servers, storage, and networking over the Internet.
+
+The customer manages the operating system, applications, and data.
+
+Examples:
+- Microsoft Azure Virtual Machines
+- Amazon EC2
+- Google Compute Engine
+Simple example: Instead of purchasing a physical computer, you rent a virtual computer from Azure.
+B. PaaS – Platform as a Service
+PaaS provides a platform where developers can build, test, and deploy applications without managing the underlying servers and operating systems.
+
+Examples:
+- Azure App Service
+- Google App Engine
+- Heroku
+Simple example: A developer can create and deploy a website using Azure App Service without managing the physical server.
+C. SaaS – Software as a Service
+SaaS provides ready-to-use software applications over the Internet.
+
+Users can access the software without installing or maintaining the underlying infrastructure.
+
+Examples:
+- Gmail
+- Microsoft 365
+- Google Docs
+- Salesforce
+Simple example: You can use Gmail directly through a browser without managing its servers.
+5. Difference Between IaaS, PaaS and SaaS
+Feature	IaaS	PaaS	SaaS
+Full form	Infrastructure as a Service	Platform as a Service	Software as a Service
+Provides	Virtual infrastructure	Development platform	Ready-to-use software
+Main users	IT administrators	Developers	End users
+Management	More customer responsibility	Shared responsibility	More provider responsibility
+Example	Azure VM	Azure App Service	Microsoft 365
+
+6. Easy way to remember
+
+
+
+
+
+
+
+
+
+
+IaaS = Rent a computer
+
+You manage the operating system and applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+PaaS = Develop an application
+
+You focus on building applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+SaaS = Use ready-made software
+
+You simply use the application.
