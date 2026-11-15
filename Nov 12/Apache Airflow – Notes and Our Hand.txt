@@ -1,0 +1,159 @@
+Apache Airflow – Notes and Our Hands-on Exercises
+1. What is Apache Airflow?
+Apache Airflow is an open-source platform used to schedule, manage, automate, and monitor workflows.
+
+It helps us run a series of tasks automatically in a particular order. These workflows can be scheduled to run daily, weekly, or at a specific time.
+
+Example: In a hotel management system, we can automate checking room readiness, verifying cleaning status, and generating a final report.
+2. Advantages of Apache Airflow
+1. Workflow automation: Automates repetitive tasks.
+2. Scheduling: Runs workflows at scheduled times.
+3. Monitoring: Allows us to monitor task execution.
+4. Error handling: Helps identify failed tasks.
+5. Task dependencies: Executes tasks in a particular order.
+6. Scalability: Can manage simple and complex workflows.
+7. Logging: Provides logs to understand task execution.
+3. Important components of Airflow
+A. DAG – Directed Acyclic Graph
+A DAG is a collection of tasks arranged in a particular order.
+- Directed means tasks follow a specific direction.
+- Acyclic means the workflow does not contain a circular path.
+- Graph means tasks are connected through dependencies.
+Example:
+
+A hotel room readiness workflow:
+Check Room Details
+        |
+        v
+Verify Cleaning Status
+        |
+        v
+Check Room Availability
+        |
+        v
+Generate Readiness Report
+
+
+B. Task
+A task is an individual unit of work inside a DAG.
+
+Example:
+- Check room details.
+- Verify cleaning status.
+- Check room availability.
+- Generate a report.
+C. Operator
+An operator defines what work a task performs.
+
+Common operators:
+Operator	Purpose
+PythonOperator	Executes Python functions
+BashOperator	Executes terminal commands
+EmptyOperator	Creates a starting or ending point
+EmailOperator	Sends emails
+
+D. Scheduler
+The scheduler determines when a DAG should run and schedules its tasks.
+E. Executor
+The executor determines how and where Airflow runs tasks.
+F. Web UI
+The Airflow Web UI allows us to:
+- View available DAGs.
+- Enable or pause DAGs.
+- Trigger DAGs manually.
+- Monitor task status.
+- Check execution logs.
+4. What is a Task Dependency?
+Task dependency defines the execution order between tasks.
+
+For example:
+task1 >> task2 >> task3
+
+
+
+This means:
+1. Task 1 executes first.
+2. Task 2 executes after Task 1.
+3. Task 3 executes after Task 2.
+The >> operator represents the downstream relationship.
+5. What is Scheduling in Airflow?
+Scheduling allows us to execute a DAG automatically.
+
+Examples:
+Schedule	Meaning
+@hourly	Runs every hour
+@daily	Runs daily
+@weekly	Runs weekly
+@monthly	Runs monthly
+None	No automatic schedule; can be triggered manually
+
+6. Our Airflow Practical Exercises
+We used Killercoda with Docker and the Airflow Web UI for our hands-on practice.
+
+Exercise 1
+ Hotel Room Readiness Report
+
+Objective: Build a four-task workflow to manage hotel room readiness.
+
+We practised:
+- Creating a DAG.
+- Defining four tasks.
+- Setting task dependencies.
+- Running the workflow.
+- Monitoring task execution in Airflow UI.
+The workflow represents the hotel room readiness process, where tasks execute in the defined order.
+
+Exercise 2
+ Second DAG practice exercise
+
+We also worked with the second hands-on exercise provided in the Airflow practice handout. The main concepts were creating tasks, arranging dependencies, and executing and monitoring the DAG.
+7. Where did we execute our exercises?
+We used the existing Killercoda Docker environment.
+
+Step 1: Check running containers
+docker ps
+
+
+Step 2: Enter the Airflow container
+docker exec -it airflow bash
+
+
+Step 3: Open the DAG folder
+cd /opt/airflow/dags
+
+
+Step 4: Create a Python DAG file
+
+For example:
+nano hotel_room_readiness.py
+
+
+Write the DAG code and save the file.
+
+Step 5: Open Airflow UI
+
+Open the Airflow Web UI using the port 8080 link provided by Killercoda.
+
+Step 6: Execute the DAG
+1. Find your DAG in the UI.
+2. Enable the DAG.
+3. Trigger it manually.
+4. Check the task execution status.
+5. Open the task logs if necessary.
+8. Airflow Task Status
+Airflow displays different statuses for tasks.
+Status	Meaning
+Scheduled	Waiting for execution
+Running	Currently executing
+Success	Completed successfully
+Failed	Execution failed
+Queued	Waiting to be executed
+Skipped	Task was skipped
+
+9. Difference Between Airflow and Azure Data Factory
+Apache Airflow	Azure Data Factory
+Open-source workflow orchestration tool	Microsoft Azure data integration service
+Uses Python DAG files	Uses pipelines and activities
+Supports different operators	Supports different activities
+Can schedule workflows	Can schedule data pipelines
+Provides task monitoring through UI	Provides pipeline monitoring
