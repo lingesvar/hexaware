@@ -1,0 +1,86 @@
+Week 5 Capstone Projects – Project 1 and Project 2
+Platform used: Google Colab
+
+In Week 5, we worked on pipeline automation and reporting for both capstone projects. We used Python in Google Colab to process the data, identify important records, and generate output reports.
+
+Project 1 – Online Course Enrollment and Progress Tracker
+1. Project Objective
+The objective of this project is to automate weekly reporting and identify students whose course progress is below 50%.
+
+This helps us identify students who may need additional support to complete their courses.
+2. Tools Used
+- Google Colab
+- Python
+- Pandas
+- CSV files
+3. Tasks Performed
+1. Loaded student enrollment and progress data from a CSV file.
+2. Read the student details and their course progress.
+3. Used Pandas to process and filter the data.
+4. Identified students whose progress percentage was below 50%.
+5. Generated a weekly progress report.
+6. Saved the report as a CSV file.
+7. Created a log file to record report execution details.
+4. Python Logic Used
+We used the Pandas filtering condition:
+low_progress = df[df["progress_percentage"] < 50]
+
+
+
+This condition selects students whose course progress is less than 50%.
+5. Output Files Generated
+File name	Purpose
+progress.csv	Input student progress data
+generate_report.py	Python reporting script
+weekly_progress_report.csv	Students below 50% progress
+course_progress_log.txt	Records report execution details
+
+6. Expected Output
+The final report contains:
+- Student ID
+- Student name
+- Course name
+- Progress percentage
+This report helps identify students who need attention because their course progress is below 50%.
+Project 2 – Inventory Management System
+1. Project Objective
+The objective of this project is to automate daily stock checking and identify products that need to be reordered.
+
+This helps businesses monitor inventory levels and avoid stock shortages.
+2. Tools Used
+- Google Colab
+- Python
+- Pandas
+- CSV files
+3. Tasks Performed
+1. Loaded inventory data from a CSV file.
+2. Read product details, warehouse information, current stock, and reorder levels.
+3. Used Pandas to process the inventory data.
+4. Compared current stock with the reorder level.
+5. Identified products whose current stock was below the reorder level.
+6. Generated a daily reorder report.
+7. Saved the report as a CSV file.
+8. Created a log file to record stock-check execution details.
+4. Python Logic Used
+We used the following Pandas filtering condition:
+reorder_items = df[    df["current_stock"] < df["reorder_level"]]
+
+
+
+This condition identifies products that have less stock than their required reorder level.
+5. Output Files Generated
+File name	Purpose
+inventory.csv	Input inventory data
+stock_check.py	Python stock-checking script
+daily_reorder_report.csv	Products needing reorder
+inventory_stock_log.txt	Records stock-check execution details
+
+6. Expected Output
+The final reorder report contains:
+- Product ID
+- Product name
+- Warehouse
+- Current stock
+- Reorder level
+- Stock status
+Products below their reorder level are marked as REORDER.
