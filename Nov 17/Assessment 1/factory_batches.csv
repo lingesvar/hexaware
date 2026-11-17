@@ -1,0 +1,8 @@
+cat > factory_batches.csv <<'EOF'
+batch_id,units_produced,defective_units,value_per_unit
+B501,100,2,350
+B502,80,7,420
+B503,120,4,300
+B504,60,0,550
+B505,90,6,400
+EOF

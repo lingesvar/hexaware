@@ -1,0 +1,9 @@
+cat > airport_baggage.csv <<'EOF'
+bag_id,flight_no,weight_kg,screening_status
+BG101,AI502,18,Clear
+BG102,AI502,27,Clear
+BG103,6E214,12,Review
+BG104,6E214,22,Clear
+BG105,UK812,25,Review
+BG106,UK812,15,Clear
+EOF

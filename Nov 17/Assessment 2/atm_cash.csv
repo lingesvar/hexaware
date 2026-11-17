@@ -1,0 +1,8 @@
+cat > atm_cash.csv <<'EOF'
+atm_id,location,cash_available,daily_demand
+ATM101,North,90000,45000
+ATM102,South,25000,40000
+ATM103,East,120000,50000
+ATM104,West,30000,60000
+ATM105,Central,70000,30000
+EOF
