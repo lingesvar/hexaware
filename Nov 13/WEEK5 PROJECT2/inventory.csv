@@ -1,7 +1,0 @@
-product_id,product_name,warehouse,current_stock,reorder_level
-201,Keyboard,Chennai,8,15
-202,Mouse,Chennai,45,20
-203,Monitor,Bengaluru,4,10
-204,USB Cable,Chennai,100,25
-205,Laptop Stand,Bengaluru,12,15
-206,Webcam,Hyderabad,6,10

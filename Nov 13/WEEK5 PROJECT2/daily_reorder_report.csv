@@ -1,5 +1,0 @@
-product_id,product_name,warehouse,current_stock,reorder_level,stock_status
-205,Laptop Stand,Bengaluru,12,15,REORDER
-203,Monitor,Bengaluru,4,10,REORDER
-201,Keyboard,Chennai,8,15,REORDER
-206,Webcam,Hyderabad,6,10,REORDER
